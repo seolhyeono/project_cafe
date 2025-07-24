@@ -24,8 +24,4 @@ public class Admin extends BaseEntity{
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
     private AdminRole adminRole;
-
-    public enum AdminRole {
-        STAFF, MANAGER, CEO
-    }
 }
