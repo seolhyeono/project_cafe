@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "admin")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Admin extends BaseEntity{

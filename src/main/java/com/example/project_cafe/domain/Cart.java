@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cart")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cart extends BaseEntity {

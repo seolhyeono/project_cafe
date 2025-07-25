@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "point_history")
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class PointHistory extends BaseEntity {

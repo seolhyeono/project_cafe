@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "admin_log")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminLog extends BaseEntity{
