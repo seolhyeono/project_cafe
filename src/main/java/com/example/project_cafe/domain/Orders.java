@@ -1,22 +1,21 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-@Data
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderId;
+    private Long orderId;
 
     @Column(length = 20)
     private String phone;
@@ -25,14 +24,14 @@ public class Orders {
     private LocalDateTime orderTime;
 
     @Column(nullable = false)
-    private Integer totalAmount;
+    private Long totalAmount;
 
     @Column(nullable = false, length = 50)
     private String status;
 
-    private Integer usedPoint = 0;
+    private Long usedPoint = 0L;
 
-    private Integer earnedPoint = 0;
+    private Long earnedPoint = 0L;
 
     @Column(nullable = false, length = 20)
     private String orderMethod;

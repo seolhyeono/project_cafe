@@ -1,25 +1,25 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @Table(name = "user")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Long userId;
 
     @Column(length = 20, nullable = false, unique = true)
     private String phone;
 
-    private Integer points = 0;
+    private Long points = 0L;
 
 }

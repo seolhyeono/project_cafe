@@ -1,21 +1,20 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 
 
 @Entity
 @Table(name = "admin_log")
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminLog extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer logId;
+    private Long logId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "adminId", nullable = false)
@@ -27,5 +26,5 @@ public class AdminLog extends BaseEntity{
     @Column(length = 50)
     private String targetTable;
 
-    private Integer targetId;
+    private Long targetId;
 }

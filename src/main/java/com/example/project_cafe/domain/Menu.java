@@ -2,20 +2,19 @@ package com.example.project_cafe.domain;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "menu")
-@Data
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer menuId;
+    private Long menuId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId", nullable = false)
@@ -25,12 +24,12 @@ public class Menu {
     private String name;
 
     @Column(nullable = false)
-    private Integer price;
+    private Long price;
 
     private String imageUrl;
 
     @Column(nullable = false)
-    private Integer stock = 0;
+    private Long stock = 0L;
 
     @Column(nullable = false)
     private Boolean isSoldOut = false;

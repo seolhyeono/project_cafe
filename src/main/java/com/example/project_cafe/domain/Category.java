@@ -1,24 +1,23 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 import java.awt.*;
 import java.util.ArrayList;
 
 @Entity
-@Data
+@Getter
 @Table(name = "category")
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer categoryId;
+    private Long categoryId;
 
     @Column(nullable = false, length = 100)
     private String name;

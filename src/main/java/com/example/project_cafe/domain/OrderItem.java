@@ -1,20 +1,19 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "order_item")
-@Data
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderItemId;
+    private Long orderItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId", nullable = false)
@@ -29,8 +28,8 @@ public class OrderItem {
     private MenuOption option;
 
     @Column(nullable = false)
-    private Integer quantity = 1;
+    private Long quantity = 1L;
 
     @Column(nullable = false)
-    private Integer price;
+    private Long price;
 }

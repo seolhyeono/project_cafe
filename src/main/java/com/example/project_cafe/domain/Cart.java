@@ -2,6 +2,7 @@ package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,13 +10,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cart")
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cart extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cartId;
+    private Long cartId;
 
     @Column(length = 20, nullable = false)
     private String phone;
@@ -29,5 +32,5 @@ public class Cart extends BaseEntity {
     private MenuOption option;
 
     @Column(nullable = false)
-    private Integer quantity = 1;
+    private Long quantity = 1L;
 }

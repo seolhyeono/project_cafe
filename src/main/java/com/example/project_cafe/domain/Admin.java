@@ -1,14 +1,14 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "admin")
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Admin extends BaseEntity{

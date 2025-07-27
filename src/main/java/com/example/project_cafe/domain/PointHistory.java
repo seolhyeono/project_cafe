@@ -1,22 +1,21 @@
 package com.example.project_cafe.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "point_history")
-
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PointHistory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer pointHistoryId;
+    private Long pointHistoryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
@@ -30,7 +29,7 @@ public class PointHistory extends BaseEntity {
     private Orders order;
 
     @Column(nullable = false)
-    private Integer amount;
+    private Long amount;
 
     @Column(length = 50)
     private String pointType;
