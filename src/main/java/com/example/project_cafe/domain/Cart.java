@@ -20,7 +20,7 @@ public class Cart extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20)
     private String phone;
 
     @ManyToOne(fetch = FetchType.LAZY)

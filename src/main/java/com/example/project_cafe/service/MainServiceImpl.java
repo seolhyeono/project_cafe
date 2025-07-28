@@ -46,7 +46,7 @@ public class MainServiceImpl implements MainService {
 
     // 3. 메뉴 상세 조회
     @Override
-    public MenuDTO getMenuDetail(Long menuId) {
+    public MenuDTO getMenu(Long menuId) {
         Menu menu = menuRepository.findById(menuId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴입니다."));
         return MenuDTO.entityToDto(menu);
@@ -54,7 +54,7 @@ public class MainServiceImpl implements MainService {
 
     // 4. 메뉴 옵션 조회
     @Override
-    public List<MenuOptionDTO> getOptionsForMenu(Long menuId) {
+    public List<MenuOptionDTO> getOptions(Long menuId) {
         return menuOptionRepository.findByMenu_MenuId(menuId)
                 .stream()
                 .map(MenuOptionDTO::entityToDto)
@@ -97,10 +97,15 @@ public class MainServiceImpl implements MainService {
         return CartDTO.entityToDto(cartItem);
     }
 
+    @Override
+    public UserDTO getUser(Long userId) {
+        return null;
+    }
+
     // 6. 장바구니 아이템 리스트 조회
     @Override
-    public List<CartDTO> getCartItems(String phone) {
-        return cartRepository.findByPhone(phone)
+    public List<CartDTO> getCartItems() {
+        return cartRepository.findAll()
                 .stream()
                 .map(CartDTO::entityToDto)
                 .collect(Collectors.toList());
@@ -128,13 +133,13 @@ public class MainServiceImpl implements MainService {
     // 9. 장바구니 전체 비우기
     @Transactional
     @Override
-    public void clearCart(String phone) {
-        cartRepository.deleteByPhone(phone);
+    public void clearCart() {
+        cartRepository.deleteAll();
     }
 
     // 10. 주문 상세 조회
     @Override
-    public OrdersDTO getOrderDetail(Long orderId) {
+    public OrdersDTO getOrder(Long orderId) {
         Orders order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 주문입니다."));
 
