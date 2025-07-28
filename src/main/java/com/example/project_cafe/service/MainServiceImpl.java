@@ -104,6 +104,14 @@ public class MainServiceImpl implements MainService {
         return UserDTO.entityToDto(user);
     }
 
+    @Override
+    public List<MenuDTO> allMenus() {
+            return menuRepository.findAll()
+                    .stream()
+                    .map(MenuDTO::entityToDto)
+                    .collect(Collectors.toList());
+    }
+
     // 6. 장바구니 아이템 리스트 조회
     @Override
     public List<CartDTO> getCartItems() {

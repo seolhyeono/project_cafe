@@ -17,4 +17,6 @@ public interface MainService {
     OrdersDTO getOrder(Long orderId);
     CartDTO addToCart(AddCartRequest request);
     UserDTO getUser(String phone);
+    List<MenuDTO> allMenus();
+
 }
