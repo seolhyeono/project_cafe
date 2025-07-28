@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>카페 메뉴</title>
+    <style>
+        .menu-item { margin: 10px 0; }
+    </style>
+</head>
+<body>
+<h1>카페 메뉴</h1>
+
+<select id="categorySelect" onchange="loadMenus()">
+    <option value="">전체</option>
+</select>
+
+<div id="menuList"></div>
+
+<script>
+    async function loadCategories() {
+        const res = await fetch('/api/categories');
+        const categories = await res.json();
+        const select = document.getElementById('categorySelect');
+        categories.forEach(cat => {
+            const opt = document.createElement('option');
+            opt.value = cat.id;
+            opt.textContent = cat.name;
+            select.appendChild(opt);
+        });
+    }
+
+    async function loadMenus() {
+        const catId = document.getElementById('categorySelect').value;
+        const url = catId ? `/api/menus?categoryId=${catId}` : '/api/menus';
+        const res = await fetch(url);
+        const menus = await res.json();
+        const container = document.getElementById('menuList');
+        container.innerHTML = '';
+        menus.forEach(menu => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            div.textContent = `${menu.name} - ${menu.price}원`;
+            container.appendChild(div);
+        });
+    }
+
+    window.onload = async () => {
+        await loadCategories();
+        await loadMenus();
+    };
+</script>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.example.project_cafe.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @EntityListeners(AuditingEntityListener.class)
-
+@MappedSuperclass
 public class BaseEntity {
 
     @LastModifiedDate

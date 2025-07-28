@@ -2,12 +2,14 @@ package com.example.project_cafe.service;
 
 import com.example.project_cafe.dto.*;
 import com.example.project_cafe.repository.CartRepository;
+import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+@Log4j2
 @SpringBootTest
 class MainServiceImplTest {
     @Autowired
@@ -77,5 +79,11 @@ class MainServiceImplTest {
     void getOrdersTest() {
         Long orderId = 1L;
         OrdersDTO ordersDTO = mainService.getOrder(orderId);
+    }
+
+    @Test
+    void getUsersTest() {
+        String phone = "01011112222";
+        log.info(mainService.getUser(phone));
     }
 }

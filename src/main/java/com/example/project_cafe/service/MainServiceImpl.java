@@ -25,6 +25,7 @@ public class MainServiceImpl implements MainService {
     private final CartRepository cartRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private final UserRepository userRepository;
 
     // 1. 카테고리 전체 조회
     @Override
@@ -98,8 +99,9 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public UserDTO getUser(Long userId) {
-        return null;
+    public UserDTO getUser(String phone) {
+        User user = userRepository.findByPhone(phone);
+        return UserDTO.entityToDto(user);
     }
 
     // 6. 장바구니 아이템 리스트 조회
