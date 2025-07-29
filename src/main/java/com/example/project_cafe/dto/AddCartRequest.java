@@ -15,12 +15,12 @@ public class AddCartRequest {
     private Long quantity;      // 수량
 
 
-    // 콤마로 구분된 옵션 문자열을 배열로 설정
-    public void setOptions(String optionsString) {
-        if (optionsString == null || optionsString.trim().isEmpty()) {
-            this.options = new String[0];
-        } else {
-            this.options = optionsString.split(",");
-        }
-    }
+//    // 콤마로 구분된 옵션 문자열을 배열로 설정
+//    public void setOptions(String optionsString) {
+//        if (optionsString == null || optionsString.trim().isEmpty()) {
+//            this.options = new String[0];
+//        } else {
+//            this.options = optionsString.split(",");
+//        }
+//    }
 }
